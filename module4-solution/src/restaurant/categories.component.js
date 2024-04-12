@@ -4,7 +4,7 @@
   angular.module('MenuApp')
     .controller('CategoriesController', CategoriesController)
     .component('categories', {
-      templateUrl: 'src/shoppinglist/templates/categories.template.html',
+      templateUrl: 'src/restaurant/templates/categories.template.html',
       controller: CategoriesController
     });
 
