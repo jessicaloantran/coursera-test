@@ -1,0 +1,25 @@
+<div>
+    <h2>Items for {{ itemsCtrl.categoryShortName }} </h2>   
+    <a ui-sref="categories">Back to Categories</a>
+    <table ng-if="itemsCtrl.items.menu_items.length > 0" >
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Short Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in itemsCtrl.items.menu_items">
+                <td>{{ item.name }}</td>
+                <td>{{ item.short_name }}</td>
+                <td>{{ item.description }}</td>
+                <td>
+                     {{ item.price_large }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
