@@ -16,7 +16,7 @@
                 <td>{{ item.short_name }}</td>
                 <td>{{ item.description }}</td>
                 <td>
-                     {{ item.price_large }}
+                    {{ item.price_large ? ('$' + item.price_large) : '' }}
                 </td>
             </tr>
         </tbody>

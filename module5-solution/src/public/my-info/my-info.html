@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>My Information</h2>
+    <div ng-if="myInfoCtrl.userInfo">
+      <p>First Name: {{ myInfoCtrl.userInfo.firstName }}</p>
+      <p>Last Name: {{ myInfoCtrl.userInfo.lastName }}</p>
+      <p>Email Address: {{ myInfoCtrl.userInfo.email }}</p>
+      <p>Phone Number: {{ myInfoCtrl.userInfo.phone }}</p>
+      <p>Favorite Dish: {{ myInfoCtrl.userInfo.favoriteDish }}</p>
+      
+    </div>
+    <div class="menu-item-tile col-md-6" ng-if="myInfoCtrl.userInfo">
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="menu-item-photo">
+              <div>{{myInfoCtrl.userInfo.menuItem.short_name}}</div>
+              <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{myInfoCtrl.userInfo.menuItem.categoryShortName}}/{{myInfoCtrl.userInfo.menuItem.short_name}}.jpg" alt="{{myInfoCtrl.userInfo.menuItem.name}}">
+            </div>
+            <div class="menu-item-price">{{myInfoCtrl.userInfo.menuItem.price_small | currency}}<span> {{myInfoCtrl.userInfo.menuItem.small_portion_name}}</span> {{myInfoCtrl.userInfo.menuItem.price_large | currency}} <span>{{myInfoCtrl.userInfo.menuItem.large_portion_name}}</span></div>
+          </div>
+          <div class="menu-item-description col-sm-7">
+            <h3 class="menu-item-title">{{myInfoCtrl.userInfo.menuItem.name}}</h3>
+            <p class="menu-item-details">{{myInfoCtrl.userInfo.menuItem.description}}</p>
+          </div>
+        </div>
+        <hr class="visible-xs">
+    </div>
+    <div ng-if="!myInfoCtrl.userInfo">
+      <p>Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></p>
+    </div>
+  </div>
+  
