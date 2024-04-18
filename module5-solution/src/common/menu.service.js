@@ -25,12 +25,19 @@
           var categoryShortName = favoriteDish && favoriteDish.length > 1 ? favoriteDish.charAt(0) : favoriteDish;
 
           return $http.get(ApiPath + '/menu_items/' + categoryShortName + '.json').then(function (response) {
+            
+            if (response.data){
               var menuItems = response.data.menu_items;
               
               var menuItem = menuItems.find(function (item) {
                   return item.short_name === favoriteDish;
               });
               return menuItem;
+            }
+            else
+            {
+              return null
+            }
           });
       };
   }

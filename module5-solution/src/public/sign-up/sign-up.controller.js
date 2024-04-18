@@ -10,10 +10,12 @@
         $signUpCtrl.user = {};
         $signUpCtrl.menuNotFound = false;
         $signUpCtrl.signUpSuccess = false;
+        $signUpCtrl.callSignUp = false;
 
         $signUpCtrl.submitSignUpForm = function () {
         MenuService.getMenuItem($signUpCtrl.user.favoriteDish)
             .then(function (response) {
+                $signUpCtrl.callSignUp = true;
                 if (response) {
                     var categoryShortName = $signUpCtrl.user.favoriteDish && $signUpCtrl.user.favoriteDish.length > 1 ? $signUpCtrl.user.favoriteDish.charAt(0) : $signUpCtrl.user.favoriteDish;
 
@@ -28,11 +30,15 @@
                 }
             })
             .catch(function (error) {
+                $signUpCtrl.menuNotFound = false;
                 $signUpCtrl.signUpSuccess = false;
-                $signUpCtrl.signUpSuccess = false;
-            console.log('Error fetching menu item:', error);
+                $signUpCtrl.callSignUp = true;
+                console.log('Error fetching menu item:', error);
             });
         };
+        $signUpCtrl.offMessage = function (){
+            $signUpCtrl.callSignUp = false;
+        }
     }
 })();
 
